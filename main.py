@@ -80,14 +80,14 @@ def home():
 def number_info():
     number = request.args.get('number', type=float)  # Accept float values directly
    
-  #  try:
-    response = main(int(number))
-    return jsonify(response)
-    # except:
-    #        return {
-    #     "number": "alphabet",
-    #     "error": True
-    # }
+    try:
+        response = main(int(number))
+        return jsonify(response)
+    except:
+           return {
+        "number": "alphabet",
+        "error": True
+    }
 
 if __name__ == '__main__':
     app.run(debug=True)
