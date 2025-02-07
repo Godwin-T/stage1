@@ -39,9 +39,9 @@ def is_odd_or_even(n):
     """ Determine if a number is odd or even. """
     n = int(n)  # Convert n to integer to perform modulus operation
     if n % 2 == 0:
-        return "Even"
+        return "even"
     else:
-        return "Odd"
+        return "odd"
 
 def get_funfact(digit):
     url = f"http://numbersapi.com/{int(digit)}/math"  # Ensure digit is integer for API call
