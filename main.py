@@ -6,9 +6,9 @@ app = Flask(__name__)
 def is_armstrong(n):
     if n < 0:
         return False  # Armstrong numbers are non-negative
-    digits = [int(d) for d in str(abs(int(n)))]  # Work with the absolute value of n, convert n to int to drop decimal part
+    digits = [int(d) for d in str(n)]  # Work with the absolute value of n, convert n to int to drop decimal part
     length = len(digits)
-    return sum(d ** length for d in digits) == abs(int(n))
+    return sum(d ** length for d in digits) == n
 
 def is_prime(n):
     """ Check if a number is a prime number. """
@@ -82,12 +82,12 @@ def number_info():
    
     try:
         response = main(int(number))
-        return jsonify(response)
+        return jsonify(response), 200
     except:
            return {
         "number": "alphabet",
         "error": True
-    }
+    }, 400
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port = 5000, debug=True)
