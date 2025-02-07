@@ -33,8 +33,6 @@ def is_perfect_number(n):
 
 def sum_of_digits(n):
     absolute_value = abs(n)
-    print("=========================================")
-    print(absolute_value)
     return sum(int(digit) for digit in str(absolute_value))  # Handle floats by taking absolute and converting to string
 
 def is_odd_or_even(n):
@@ -80,17 +78,16 @@ def home():
 
 @app.route('/api/classify-number/', methods=['GET'])
 def number_info():
-    number = request.args.get('number', type=int)  # Accept float values directly
+    number = request.args.get('number', type=float)  # Accept float values directly
    
-   # try:
-    response = main(number)
+  #  try:
+    response = main(int(number))
     return jsonify(response)
+    # except:
+    #        return {
+    #     "number": "alphabet",
+    #     "error": True
+    # }
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-# def sum_of_digits(n):
-#     return sum(int(digit) for digit in str(abs((n)))) 
-
-# sum_of_digits(20)
